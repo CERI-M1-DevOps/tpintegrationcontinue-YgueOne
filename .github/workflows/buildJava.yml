@@ -1,0 +1,16 @@
+name : Java CI with Maven - Test and Package
+
+on : [pull_request]
+
+jobs:
+    Actions: 
+        name: Actions
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-java@v4
+              with:
+                  distribution: 'corretto'
+                  java-version: '21'
+            - name: Build with Maven
+              run: mvn -B package --file pom.xml
